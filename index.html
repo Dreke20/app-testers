@@ -238,6 +238,69 @@
     .tracker-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width .6s ease; }
     .tracker-note { font-size: 12px; color: var(--text-muted); line-height: 1.45; }
     .tracker-updated { font-size: 11px; color: var(--text-faint); margin-top: 4px; }
+
+    .preview-banner {
+      background: var(--accent); color: #0d0f12;
+      text-align: center; font-size: 13px; font-weight: 600;
+      padding: 8px 16px; line-height: 1.45;
+    }
+    .preview-banner[hidden] { display: none; }
+
+    .checkin-summary {
+      margin-top: 14px; font-size: 13px; color: var(--text-muted); line-height: 1.5;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 11px 14px; max-width: 1100px;
+    }
+
+    .howto {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 12px 14px;
+    }
+    .howto-title {
+      font-size: 11px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--text-faint); margin-bottom: 4px;
+    }
+    .howto-step {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: 13px; color: var(--text); padding: 7px 0; cursor: pointer;
+    }
+    .howto-step + .howto-step { border-top: 1px solid var(--border); }
+    .howto-step input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--accent); flex: 0 0 auto; }
+    .howto-step.is-done span { color: var(--green); text-decoration: line-through; text-decoration-color: rgba(61,186,122,.5); }
+    .howto-hint { font-size: 11.5px; color: var(--text-faint); margin-top: 6px; line-height: 1.45; }
+
+    .optin-wrap { display: grid; gap: 8px; }
+    .optin-wrap .btn-optin { width: 100%; justify-content: center; }
+    .optin-form {
+      display: grid; gap: 8px;
+      background: var(--accent-dim); border: 1px solid rgba(245,166,35,.25);
+      border-radius: var(--radius); padding: 12px 14px;
+    }
+    .optin-form[hidden], .optin-done[hidden] { display: none; }
+    .optin-form label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: 500; color: var(--text-muted); }
+    .optin-form input[type="email"], .optin-form input[type="text"] {
+      font: inherit; color: var(--text); background: var(--bg);
+      border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px;
+    }
+    .optin-form input:focus { border-color: var(--accent); outline: none; }
+    .optin-check { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--text); font-weight: 500; }
+    .optin-check input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--accent); flex: 0 0 auto; }
+    .optin-note, .optin-status { font-size: 11.5px; color: var(--text-faint); line-height: 1.45; }
+    .optin-status.is-err { color: var(--accent); }
+    .optin-done {
+      font-size: 13px; font-weight: 500; line-height: 1.5; color: var(--green);
+      background: var(--green-dim); border: 1px solid rgba(61,186,122,.25);
+      border-radius: var(--radius); padding: 11px 13px;
+    }
+
+    .thanks-wall { margin-top: 8px; }
+    .thanks-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin-top: 12px; }
+    .thanks-chip {
+      font-size: 13px; font-weight: 600; color: var(--text);
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 999px; padding: 6px 12px;
+    }
+    .thanks-empty { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
     .pending-note {
       font-size: 13px; font-weight: 500; line-height: 1.45; color: var(--green);
       background: var(--green-dim); border: 1px solid rgba(61,186,122,.25); border-radius: var(--radius); padding: 11px 13px;
@@ -537,6 +600,7 @@
 </head>
 <body>
   <div class="bg-fallback" aria-hidden="true"></div>
+  <div class="preview-banner" id="preview-banner" role="status">Preview only — not published. Counts are the current hand-set numbers until the Apps Script is redeployed.</div>
   <canvas id="bg3d" aria-hidden="true"></canvas>
   <div class="bg-vignette" aria-hidden="true"></div>
   <a href="#apps-section" class="skip-link">Skip to apps</a>
@@ -645,10 +709,22 @@
       <div class="wrap--wide">
         <div class="section-head">
           <h2>Apps you can test</h2>
-          <p class="lede">Each card has the three links you need for steps 1–3. Found a bug or have an idea? Use Send feedback on the card or in the menu.</p>
+          <p class="lede">Each card has the three links you need for steps 1–3. Check them off as you go, then tap I’ve joined &amp; opted in so the public count can update. Found a bug or have an idea? Use Send feedback on the card or in the menu.</p>
+          <p class="checkin-summary" id="checkin-summary" aria-live="polite"></p>
         </div>
         <div id="apps" aria-live="polite"></div>
         <noscript><p class="noscript">Turn on JavaScript to see the app cards, tester links, and feedback form.</p></noscript>
+      </div>
+    </section>
+
+    <section class="section thanks-wall" id="thanks">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Thank you, testers</h2>
+          <p class="lede">People who opt in and share a first name are thanked here. Email addresses are never shown on this page.</p>
+        </div>
+        <p class="thanks-empty" id="thanks-empty">Testers who opt in and share a first name will appear here.</p>
+        <ul class="thanks-list" id="thanks-list" aria-label="Testers who asked to be thanked"></ul>
       </div>
     </section>
 
@@ -735,7 +811,7 @@
         <ul class="listing-features">
           <li class="listing-feature"><div class="listing-feature-icon" aria-hidden="true">🃏</div><h4>An app card on App Lab</h4><p>Your app is listed next to the other apps testers already visit.</p></li>
           <li class="listing-feature"><div class="listing-feature-icon" aria-hidden="true">👥</div><h4>Google Group and opt-in steps</h4><p>Testers get the same join, Become a tester, and Play install path.</p></li>
-          <li class="listing-feature"><div class="listing-feature-icon" aria-hidden="true">📊</div><h4>A live tester tracker</h4><p>A public “X of 12 testers / Day N of 14” count so people can see what’s still needed.</p></li>
+          <li class="listing-feature"><div class="listing-feature-icon" aria-hidden="true">📊</div><h4>A live tester tracker</h4><p>A public “X of 12 testers / Day N of 14” count, updated when testers tap I’ve joined &amp; opted in.</p></li>
           <li class="listing-feature"><div class="listing-feature-icon" aria-hidden="true">🔔</div><h4>Daily-open reminders</h4><p>We ask testers to stay opted in and open the app for about a minute each day.</p></li>
           <li class="listing-feature"><div class="listing-feature-icon" aria-hidden="true">📋</div><h4>A weekly feedback and bug report</h4><p>What testers actually send in, compiled for you.</p></li>
         </ul>
@@ -1000,8 +1076,12 @@
             <p>Yes. Use the Request an app form above. Builds are Android-first. iOS can be quoted on request. Prices on this page are starting-at estimates. A free consult comes first, then a written quote. I don’t guarantee Google Play approval or a download count.</p>
           </details>
           <details>
+            <summary>Will the tester counts update when I join?</summary>
+            <p>The public count on each card updates when someone taps I’ve joined &amp; opted in and sends the Google account they used to join the group. That is a self-report. This site cannot read Google Play’s official opted-in list, so a check-in here is not proof that Play has counted you. If the live count can’t be loaded, the card falls back to the last number we entered by hand.</p>
+          </details>
+          <details>
             <summary>What data does this page collect?</summary>
-            <p>This page doesn’t collect anything unless you send a form. The feedback form asks which app you mean, a description, and optionally your email, device, and app version so we can follow up. The listing form asks for your name, email, app name, Play link or package, how many testers you have, and a message. The build request form asks for your name, email, business or app name, app idea, platform, budget range, timeline, optional management package, and notes. Submissions go to our support inbox and a private list. We don’t sell this information. Each app also has its own privacy policy, linked on its card and in the footer.</p>
+            <p>This page doesn’t collect anything unless you send a form or check in as a tester. The feedback form asks which app you mean, a description, and optionally your email, device, and app version so we can follow up. The I’ve joined &amp; opted in form asks for the Google account email you used to join the tester group, and optionally a first name for the thank-you wall. The listing form asks for your name, email, app name, Play link or package, how many testers you have, and a message. The build request form asks for your name, email, business or app name, app idea, platform, budget range, timeline, optional management package, and notes. Submissions go to our support inbox and a private list. We don’t sell this information. Opt-in emails are never shown on this page. Each app also has its own privacy policy, linked on its card and in the footer.</p>
           </details>
         </div>
       </div>
@@ -1122,6 +1202,12 @@
     // PASTE the Apps Script web app URL here after Dreke deploys it (the URL ends in /exec).
     // Until then, the form falls back to a mailto: message to support.
     const FEEDBACK_ENDPOINT = "https://script.google.com/macros/s/AKfycbx7EUPqhy5V-JfyaQLqMwHllg92Xbg2aej17W2mH9ipAAD6A86DvuYM6mOF1pQJWJpL/exec";
+    // Set to false before publishing this preview.
+    const PREVIEW_MODE = false;
+    (function () {
+      const bar = document.getElementById("preview-banner");
+      if (bar && !PREVIEW_MODE) bar.hidden = true;
+    })();
 
     function slug(name) {
       return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -1164,10 +1250,28 @@
     const REQUIRED_TESTERS = 12;
     const TEST_DAYS = 14;
     const TRACKER_UPDATED = "Nov 13, 2026";
+    const HOWTO_STEPS = [
+      "Join the tester Google Group",
+      "Tap Become a tester on the Play opt-in page",
+      "Install the app from the Play Store",
+      "Open the app for about a minute each day"
+    ];
 
-    function renderTracker(app) {
-      const count = Math.max(0, Number(app.testers) || 0);
-      const wrap = el("div", { class: "tracker", "aria-label": "Testing progress" });
+    var liveCounts = null;
+    var liveThanks = [];
+    var liveUpdated = "";
+    var countsAreLive = false;
+
+    function displayCountFor(app) {
+      const hand = Math.max(0, Number(app.testers) || 0);
+      if (countsAreLive && liveCounts && typeof liveCounts[app.name] === "number") {
+        return Math.max(hand, liveCounts[app.name]);
+      }
+      return hand;
+    }
+
+    function trackerModel(app) {
+      const count = displayCountFor(app);
       let head, pct, note;
       if (app.testStart) {
         const start = new Date(app.testStart + "T00:00:00");
@@ -1179,7 +1283,7 @@
         pct = (elapsed / TEST_DAYS) * 100;
         if (left > 0) {
           head = ["14-day test in progress", "Day " + Math.min(TEST_DAYS, elapsed + 1) + " of " + TEST_DAYS];
-          note = left + (left === 1 ? " day" : " days") + " left. Testing wraps up around " + endText + ". Please keep it installed and open it for 1 minute each day.";
+          note = left + (left === 1 ? " day" : " days") + " left · " + count + " of " + REQUIRED_TESTERS + " testers still opted in. Testing wraps up around " + endText + ". Please keep it installed and open it for 1 minute each day.";
         } else {
           head = ["14-day test complete", "Done"];
           note = "Thank you, testers! This app finished its 14-day closed test.";
@@ -1189,18 +1293,323 @@
         pct = Math.min(100, (count / REQUIRED_TESTERS) * 100);
         head = ["Testers joined", Math.min(count, REQUIRED_TESTERS) + " of " + REQUIRED_TESTERS];
         note = need > 0
-          ? need + " more " + (need === 1 ? "tester" : "testers") + " needed before the 14-day test can start. Already in? Open the app for 1 minute each day."
+          ? need + " more " + (need === 1 ? "tester" : "testers") + " needed before the 14-day clock can start. Already in? Check in below, and open the app for 1 minute each day."
           : "We have enough testers! The 14-day test starts as soon as everyone has installed. Then open it for 1 minute each day.";
       }
-      wrap.appendChild(el("div", { class: "tracker-head" }, [el("span", { text: head[0] }), el("span", { text: head[1] })]));
-      const bar = el("div", { class: "tracker-bar", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": String(Math.round(pct)) });
+      const updated = countsAreLive
+        ? "Self-reported opt-ins" + (liveUpdated ? " · updated " + liveUpdated + " (America/New_York)" : "") + ". These counts aren’t verified against Google Play."
+        : "Counts updated " + TRACKER_UPDATED + ". Live self-reported counts appear after the form script is updated.";
+      return { head: head, pct: pct, note: note, updated: updated, count: count };
+    }
+
+    function applyTracker(wrap, app) {
+      const model = trackerModel(app);
+      const labels = wrap.querySelectorAll(".tracker-head span");
+      if (labels[0]) labels[0].textContent = model.head[0];
+      if (labels[1]) labels[1].textContent = model.head[1];
+      const bar = wrap.querySelector(".tracker-bar");
+      const fill = wrap.querySelector(".tracker-fill");
+      if (bar) bar.setAttribute("aria-valuenow", String(Math.round(model.pct)));
+      if (fill) fill.style.width = model.pct + "%";
+      const note = wrap.querySelector(".tracker-note");
+      if (note) note.textContent = model.note;
+      const updated = wrap.querySelector(".tracker-updated");
+      if (updated) updated.textContent = model.updated;
+    }
+
+    function renderTracker(app) {
+      const model = trackerModel(app);
+      const wrap = el("div", { class: "tracker", "data-tracker-for": app.name, "aria-label": "Testing progress" });
+      wrap.appendChild(el("div", { class: "tracker-head" }, [el("span", { text: model.head[0] }), el("span", { text: model.head[1] })]));
+      const bar = el("div", { class: "tracker-bar", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": String(Math.round(model.pct)) });
       const fill = el("div", { class: "tracker-fill" });
-      fill.style.width = pct + "%";
+      fill.style.width = model.pct + "%";
       bar.appendChild(fill);
       wrap.appendChild(bar);
-      wrap.appendChild(el("p", { class: "tracker-note", text: note }));
-      wrap.appendChild(el("p", { class: "tracker-updated", text: "Counts updated " + TRACKER_UPDATED }));
+      wrap.appendChild(el("p", { class: "tracker-note", text: model.note }));
+      wrap.appendChild(el("p", { class: "tracker-updated", text: model.updated }));
       return wrap;
+    }
+
+    function storageGet(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw == null ? fallback : raw;
+      } catch (err) {
+        return fallback;
+      }
+    }
+
+    function storageSet(key, value) {
+      try { localStorage.setItem(key, value); } catch (err) {}
+    }
+
+    function checklistKey(app) { return "applab-checklist:" + slug(app.name); }
+    function optinKey(app) { return "applab-optin:" + slug(app.name); }
+
+    function loadChecklist(app) {
+      try {
+        const parsed = JSON.parse(storageGet(checklistKey(app), "null"));
+        if (!Array.isArray(parsed) || parsed.length !== HOWTO_STEPS.length) {
+          return HOWTO_STEPS.map(function () { return false; });
+        }
+        return parsed.map(Boolean);
+      } catch (err) {
+        return HOWTO_STEPS.map(function () { return false; });
+      }
+    }
+
+    function saveChecklist(app, state) {
+      storageSet(checklistKey(app), JSON.stringify(state));
+    }
+
+    function renderHowto(app) {
+      const state = loadChecklist(app);
+      const box = el("div", { class: "howto", "aria-label": "How to join this test" });
+      box.appendChild(el("div", { class: "howto-title", text: "How to join" }));
+      HOWTO_STEPS.forEach(function (label, index) {
+        const checkId = "howto-" + slug(app.name) + "-" + index;
+        const row = el("label", { class: "howto-step" + (state[index] ? " is-done" : ""), for: checkId });
+        const input = el("input", { type: "checkbox", id: checkId });
+        input.checked = !!state[index];
+        input.addEventListener("change", function () {
+          state[index] = input.checked;
+          row.classList.toggle("is-done", input.checked);
+          saveChecklist(app, state);
+        });
+        row.appendChild(input);
+        row.appendChild(el("span", { text: (index + 1) + ". " + label }));
+        box.appendChild(row);
+      });
+      box.appendChild(el("p", { class: "howto-hint", text: "Check these off as you go. They stay on this device only." }));
+      return box;
+    }
+
+    function isCheckinEmail(value) {
+      const parts = String(value || "").trim().split("@");
+      return parts.length === 2 && parts[0].length > 0 && parts[1].indexOf(".") !== -1;
+    }
+
+    function hasLocalOptIn(app) {
+      return !!storageGet(optinKey(app), "");
+    }
+
+    function renderOptIn(app) {
+      const wrap = el("div", { class: "optin-wrap" });
+      const button = el("button", {
+        class: "btn btn-optin js-gated",
+        type: "button",
+        text: "I’ve joined & opted in"
+      });
+      const form = el("form", { class: "optin-form", novalidate: true, hidden: true });
+      const hp = el("div", { class: "hp", "aria-hidden": "true" });
+      hp.appendChild(el("label", { text: "Website " }, [
+        el("input", { type: "text", name: "website", tabindex: "-1", autocomplete: "off" })
+      ]));
+      const emailId = "optin-email-" + slug(app.name);
+      const nameId = "optin-name-" + slug(app.name);
+      const confirmId = "optin-confirm-" + slug(app.name);
+      const emailLabel = el("label", { for: emailId, text: "Google account email" });
+      const emailInput = el("input", {
+        id: emailId,
+        name: "email",
+        type: "email",
+        autocomplete: "email",
+        required: true,
+        placeholder: "The Gmail you used to join the group"
+      });
+      emailLabel.appendChild(emailInput);
+      const nameLabel = el("label", { for: nameId, text: "First name (optional, for the thank-you wall)" });
+      const nameInput = el("input", {
+        id: nameId,
+        name: "displayName",
+        type: "text",
+        autocomplete: "given-name",
+        maxlength: "24",
+        placeholder: "Leave blank to stay off the wall"
+      });
+      nameLabel.appendChild(nameInput);
+      const confirmRow = el("label", { class: "optin-check", for: confirmId });
+      const confirmInput = el("input", { id: confirmId, type: "checkbox", name: "confirmed" });
+      confirmRow.appendChild(confirmInput);
+      confirmRow.appendChild(document.createTextNode("I joined the tester group and tapped Become a tester for this app."));
+      const note = el("p", { class: "optin-note", text: "This is a self-report. We can’t see Google Play’s official opt-in list from this page. Your email is stored privately and is never shown here." });
+      const status = el("p", { class: "optin-status", role: "status" });
+      const submit = el("button", { class: "btn btn-primary", type: "submit", text: "Count me in" });
+      form.appendChild(hp);
+      form.appendChild(emailLabel);
+      form.appendChild(nameLabel);
+      form.appendChild(confirmRow);
+      form.appendChild(note);
+      form.appendChild(submit);
+      form.appendChild(status);
+      const done = el("p", { class: "optin-done", hidden: true, text: "You’re on the self-reported tester list for this app. Thank you — please keep it installed and open it daily." });
+
+      function showDone() {
+        button.hidden = true;
+        form.hidden = true;
+        done.hidden = false;
+      }
+
+      if (hasLocalOptIn(app)) showDone();
+
+      button.addEventListener("click", function () {
+        if (button.classList.contains("is-disabled")) return;
+        form.hidden = !form.hidden;
+        if (!form.hidden) emailInput.focus();
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const email = emailInput.value.trim();
+        const name = nameInput.value.trim();
+        const website = form.website.value.trim();
+        status.className = "optin-status";
+        if (website) {
+          storageSet(optinKey(app), "honeypot");
+          showDone();
+          return;
+        }
+        if (!email || !isCheckinEmail(email)) {
+          status.textContent = "Enter the Google account email you used to join the group.";
+          status.className = "optin-status is-err";
+          emailInput.focus();
+          return;
+        }
+        if (!confirmInput.checked) {
+          status.textContent = "Please confirm you joined the group and became a tester.";
+          status.className = "optin-status is-err";
+          confirmInput.focus();
+          return;
+        }
+        if (hasLocalOptIn(app)) {
+          showDone();
+          return;
+        }
+
+        submit.disabled = true;
+        status.textContent = "Sending…";
+
+        const endpoint = (FEEDBACK_ENDPOINT || "").trim();
+        const payload = {
+          kind: "optin",
+          type: "Tester opt-in",
+          app: app.name,
+          email: email,
+          name: name,
+          displayName: name,
+          description: "TESTER OPT-IN\nApp: " + app.name + "\nEmail: " + email + (name ? "\nDisplay name: " + name : ""),
+          website: ""
+        };
+
+        function finishLocal() {
+          storageSet(optinKey(app), email.toLowerCase());
+          showDone();
+          loadLiveCounts(function () {
+            refreshLiveUi();
+          });
+        }
+
+        if (!endpoint) {
+          finishLocal();
+          return;
+        }
+
+        fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        }).then(function () {
+          finishLocal();
+        }).catch(function () {
+          storageSet(optinKey(app), email.toLowerCase());
+          showDone();
+          status.textContent = "Saved on this device. The live count will update after the form script can be reached.";
+        }).then(function () {
+          submit.disabled = false;
+        });
+      });
+
+      wrap.appendChild(button);
+      wrap.appendChild(form);
+      wrap.appendChild(done);
+      return wrap;
+    }
+
+    function refreshCheckinSummary() {
+      const line = document.getElementById("checkin-summary");
+      if (!line) return;
+      const liveApps = visibleApps.filter(function (app) { return app.groupStatus !== "coming"; });
+      const parts = liveApps.map(function (app) {
+        const shortName = app.name.split(":")[0];
+        return shortName + " " + displayCountFor(app) + "/" + REQUIRED_TESTERS;
+      });
+      const total = liveApps.reduce(function (sum, app) { return sum + displayCountFor(app); }, 0);
+      const source = countsAreLive ? "Self-reported check-ins" : "Last confirmed counts";
+      line.textContent = source + " · " + parts.join(" · ") + " · " + total + " testers across " + liveApps.length + " apps.";
+    }
+
+    function refreshThanksWall() {
+      const list = document.getElementById("thanks-list");
+      const empty = document.getElementById("thanks-empty");
+      if (!list || !empty) return;
+      list.textContent = "";
+      const names = (liveThanks || []).map(function (name) {
+        return String(name || "").replace(/[@<>]/g, "").trim();
+      }).filter(Boolean);
+      if (!names.length) {
+        empty.hidden = false;
+        return;
+      }
+      empty.hidden = true;
+      names.forEach(function (name) {
+        list.appendChild(el("li", { class: "thanks-chip", text: name }));
+      });
+    }
+
+    function refreshLiveUi() {
+      document.querySelectorAll("[data-tracker-for]").forEach(function (wrap) {
+        const name = wrap.getAttribute("data-tracker-for");
+        const app = visibleApps.filter(function (item) { return item.name === name; })[0];
+        if (app) applyTracker(wrap, app);
+      });
+      refreshCheckinSummary();
+      refreshThanksWall();
+    }
+
+    function loadLiveCounts(done) {
+      const endpoint = (FEEDBACK_ENDPOINT || "").trim();
+      if (!endpoint) {
+        if (done) done(false);
+        return;
+      }
+      const cbName = "applabOptinCb_" + String(Date.now());
+      let settled = false;
+      let script;
+      function finish(ok, data) {
+        if (settled) return;
+        settled = true;
+        try { delete window[cbName]; } catch (err) {}
+        if (script && script.parentNode) script.parentNode.removeChild(script);
+        clearTimeout(timer);
+        if (ok && data && data.ok && data.counts && typeof data.counts === "object") {
+          liveCounts = data.counts;
+          liveThanks = Array.isArray(data.thanks) ? data.thanks : [];
+          liveUpdated = data.updated ? String(data.updated) : "";
+          countsAreLive = true;
+          if (done) done(true);
+        } else {
+          if (done) done(false);
+        }
+      }
+      const timer = setTimeout(function () { finish(false); }, 6000);
+      window[cbName] = function (data) { finish(true, data); };
+      script = document.createElement("script");
+      script.async = true;
+      script.src = endpoint + (endpoint.indexOf("?") >= 0 ? "&" : "?") + "callback=" + encodeURIComponent(cbName);
+      script.onerror = function () { finish(false); };
+      document.head.appendChild(script);
     }
 
     const PENDING_NOTE = "Opening soon - tester group awaiting Google approval";
@@ -1260,7 +1669,10 @@
         el("div", { class: "app-meta" }, metaChildren)
       ]));
 
-      if (!coming) card.appendChild(renderTracker(app));
+      if (!coming) {
+        card.appendChild(renderTracker(app));
+        card.appendChild(renderHowto(app));
+      }
 
       const bottom = el("div", { class: "card-bottom" });
       if (pending) {
@@ -1299,6 +1711,7 @@
         onclick: function () { selectFeedbackApp(app.name); }
       }));
       bottom.appendChild(actions);
+      bottom.appendChild(renderOptIn(app));
       card.appendChild(bottom);
 
       setCardUnlocked(card, !app.age18 && !pending);
@@ -1317,6 +1730,8 @@
     visibleApps.forEach(function (app) {
       root.appendChild(renderApp(app));
     });
+    refreshLiveUi();
+    loadLiveCounts(function () { refreshLiveUi(); });
 
     (function populateFeedbackApps() {
       const select = document.getElementById("feedback-app");
@@ -1712,7 +2127,7 @@
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
       }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
-      var SEL = ".section-head, .steps, .note, .swap-box, .form-wrap, .tier-card, .listing-feature, .faq details, .app-card, .hero-stats";
+      var SEL = ".section-head, .steps, .note, .swap-box, .form-wrap, .tier-card, .listing-feature, .faq details, .app-card, .hero-stats, .thanks-wall";
       function tag(root) {
         (root.querySelectorAll ? root.querySelectorAll(SEL) : []).forEach(function (el, i) {
           if (el.classList.contains("reveal")) return;
