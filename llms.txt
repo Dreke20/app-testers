@@ -9,6 +9,7 @@ Parent organization: Dirty South Marketing Agency (https://dirtysouthagency.com/
 ## Contact
 
 - Email: dirtysouthmarketingagency@gmail.com
+- Discord (Dirty South App Lab): https://discord.gg/e2d2MNvdKF
 - Facebook: https://www.facebook.com/profile.php?id=61596920212174
 - Instagram: https://www.instagram.com/dirtysouth.agency/
 - LinkedIn: https://www.linkedin.com/company/dirty-south-marketing-agency/
@@ -16,8 +17,11 @@ Parent organization: Dirty South Marketing Agency (https://dirtysouthagency.com/
 ## Site pages
 
 - Home: https://apps.dirtysouthagency.com/
+- Feedback: https://apps.dirtysouthagency.com/feedback/
 - Terms of use: https://apps.dirtysouthagency.com/terms/
 - Privacy: https://apps.dirtysouthagency.com/privacy/
+
+Testers can send feedback in the Dirty South App Lab Discord or by email to dirtysouthmarketingagency@gmail.com. Please name the app, the device, and what happened.
 
 ## How testing works
 
