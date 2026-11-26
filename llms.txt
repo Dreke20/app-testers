@@ -13,6 +13,12 @@ Parent organization: Dirty South Marketing Agency (https://dirtysouthagency.com/
 - Instagram: https://www.instagram.com/dirtysouth.agency/
 - LinkedIn: https://www.linkedin.com/company/dirty-south-marketing-agency/
 
+## Site pages
+
+- Home: https://apps.dirtysouthagency.com/
+- Terms of use: https://apps.dirtysouthagency.com/terms/
+- Privacy: https://apps.dirtysouthagency.com/privacy/
+
 ## How testing works
 
 Use the same Google account that is signed in on your phone’s Play Store for every step.
