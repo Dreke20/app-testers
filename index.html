@@ -697,7 +697,7 @@
         <div class="steps">
           <article class="step">
             <div class="step-num">01</div>
-            <h3>Join that app’s Google Group</h3>
+            <h3>Join the App Lab tester Google Group (one group covers every app).</h3>
             <p>Join with the same Google account as your Play Store. If a group is still awaiting Google approval, that card will say “Opening soon” and the links will stay locked.</p>
           </article>
           <article class="step">
@@ -1784,10 +1784,12 @@
 
       setCardUnlocked(card, !app.age18 && !pending);
       if (app.age18) {
-        const box = card.querySelector("input[type='checkbox']");
-        box.addEventListener("change", function () {
-          setCardUnlocked(card, box.checked);
-        });
+        const box = card.querySelector("#age-" + id);
+        if (box) {
+          box.addEventListener("change", function () {
+            setCardUnlocked(card, box.checked);
+          });
+        }
       }
 
       return card;
