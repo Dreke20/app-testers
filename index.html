@@ -357,6 +357,9 @@
     .swap-box p { font-size: 14px; color: var(--text-muted); }
     .swap-box p + p { margin-top: 10px; }
     @media (max-width: 540px) { .swap-box { flex-direction: column; padding: 22px 20px; gap: 12px; } }
+    .swap-stack { display: flex; flex-direction: column; gap: 16px; }
+    .swap-box .btn { margin-top: 16px; }
+
 
     /* OFFER / CALLOUTS */
     .offer-box {
@@ -910,6 +913,7 @@
       <div class="hero-ctas">
         <a href="#apps-section" class="btn btn-primary">Browse apps to test</a>
         <a href="#how" class="btn">How it works</a>
+        <a href="https://discord.gg/e2d2MNvdKF" class="btn" target="_blank" rel="noopener noreferrer">Join our tester Discord</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -1051,7 +1055,15 @@
       </div>
     </section>
 
-    <section class="wrap--wide" id="swap" style="padding-bottom:72px">
+    <section class="wrap--wide swap-stack" id="swap" style="padding-bottom:72px">
+      <div class="swap-box" id="discord">
+        <div class="swap-icon" aria-hidden="true">💬</div>
+        <div>
+          <h2>Join our tester Discord</h2>
+          <p>Chat with other testers, get updates, and report bugs in the Dirty South App Lab server.</p>
+          <a class="btn btn-primary" href="https://discord.gg/e2d2MNvdKF" target="_blank" rel="noopener noreferrer">Join our tester Discord</a>
+        </div>
+      </div>
       <div class="swap-box">
         <div class="swap-icon" aria-hidden="true">🤝</div>
         <div>
@@ -1123,6 +1135,7 @@
             <a class="social-link" href="https://www.facebook.com/profile.php?id=61596920212174" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>Facebook</a>
             <a class="social-link" href="https://www.instagram.com/dirtysouth.agency/" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>Instagram</a>
             <a class="social-link" href="https://www.linkedin.com/company/dirty-south-marketing-agency/" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 21.5h-4V8h4v13.5zM4.5 6.5C3.12 6.5 2 5.38 2 4s1.12-2.5 2.5-2.5S7 2.62 7 4 5.88 6.5 4.5 6.5zM21.5 21.5h-4v-6.6c0-1.57-.03-3.59-2.19-3.59-2.19 0-2.52 1.71-2.52 3.48v6.71h-4V8h3.84v1.84h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.13v7.61z"/></svg>LinkedIn</a>
+            <a class="social-link" href="https://discord.gg/e2d2MNvdKF" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.2.37-.44.86-.6 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03 14.09 14.09 0 0 0 1.23-1.99.08.08 0 0 0-.04-.11 13.11 13.11 0 0 1-1.87-.89.08.08 0 0 1-.01-.13c.12-.1.25-.2.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1-.01.13 12.3 12.3 0 0 1-1.87.89.08.08 0 0 0-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .08.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.17-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42z"/></svg>Discord</a>
         </nav>
       </div>
     </section>
@@ -1431,6 +1444,7 @@
             <a class="social-link" href="https://www.facebook.com/profile.php?id=61596920212174" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>Facebook</a>
             <a class="social-link" href="https://www.instagram.com/dirtysouth.agency/" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>Instagram</a>
             <a class="social-link" href="https://www.linkedin.com/company/dirty-south-marketing-agency/" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 21.5h-4V8h4v13.5zM4.5 6.5C3.12 6.5 2 5.38 2 4s1.12-2.5 2.5-2.5S7 2.62 7 4 5.88 6.5 4.5 6.5zM21.5 21.5h-4v-6.6c0-1.57-.03-3.59-2.19-3.59-2.19 0-2.52 1.71-2.52 3.48v6.71h-4V8h3.84v1.84h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.13v7.61z"/></svg>LinkedIn</a>
+            <a class="social-link" href="https://discord.gg/e2d2MNvdKF" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.2.37-.44.86-.6 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03 14.09 14.09 0 0 0 1.23-1.99.08.08 0 0 0-.04-.11 13.11 13.11 0 0 1-1.87-.89.08.08 0 0 1-.01-.13c.12-.1.25-.2.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1-.01.13 12.3 12.3 0 0 1-1.87.89.08.08 0 0 0-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 0 0 .08.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.17-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42z"/></svg>Discord</a>
           </nav>
         </div>
       </div>
