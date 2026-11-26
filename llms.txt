@@ -1,0 +1,66 @@
+# Dirty South’s App Lab
+
+> Android closed-testing signup for Dirty South apps, plus a way for indie developers to list an app and for local businesses to request a custom Android build. Built by Dirty South Marketing Agency in Macon, GA.
+
+Dirty South’s App Lab is at https://apps.dirtysouthagency.com/. These Android apps are in Google Play closed testing. The steps are the same for every app. There are no fake installs and no paid reviews.
+
+Parent organization: Dirty South Marketing Agency (https://dirtysouthagency.com/), Macon and Warner Robins, Georgia.
+
+## Contact
+
+- Email: dirtysouthmarketingagency@gmail.com
+- Facebook: https://www.facebook.com/profile.php?id=61596920212174
+- Instagram: https://www.instagram.com/dirtysouth.agency/
+- LinkedIn: https://www.linkedin.com/company/dirty-south-marketing-agency/
+
+## How testing works
+
+Use the same Google account that is signed in on your phone’s Play Store for every step.
+
+1. Join the App Lab tester Google Group (one group covers every app): https://groups.google.com/g/dirtysouth-app-lab-testers
+2. Become a tester on the official Google Play opt-in page.
+3. Wait a few minutes, then install the app from its Play Store link. The store page stays hidden until you have opted in.
+4. Stay opted in, keep the app installed, and open it for about 1 minute every day during the 14-day closed test.
+
+Google Play requires at least 12 testers to stay opted in for 14 consecutive days before a new personal developer account can apply for production. Uninstalling or leaving early can reset that clock. Joining a closed test and installing the app is free. Tests are Android only, through Google Play, and are not available on iPhone.
+
+This site does not pay for installs, ratings, or Play Store reviews. It does not guarantee a tester count or Google’s approval.
+
+## Apps you can test
+
+Play testing URLs are the official Google Play closed-test opt-in pages. One Google Group covers every live app.
+
+- ShrinkPro (Tools): Compress photos, videos, and PDFs. Testing: https://play.google.com/apps/testing/com.shrinkpro.toolkit — Play Store: https://play.google.com/store/apps/details?id=com.shrinkpro.toolkit — Privacy: https://dreke20.github.io/whispers26-legal/shrinkpro/privacy.html
+- SparkQuest: Date & Co-Op Quests (Dating): Dating without the endless swipe. Match, then play in-chat games and take the date into the real world — trivia duels, 2 truths & 1 lie, would you rather, and public-spot date quests, with safety tools built in. Testing: https://play.google.com/apps/testing/com.sparkquest.sparkquest — Play Store: https://play.google.com/store/apps/details?id=com.sparkquest.sparkquest — Privacy: https://dreke20.github.io/SparkQuest/privacy.html
+- Whispers & Warnings (Lifestyle): Readings and chat. Testing: https://play.google.com/apps/testing/whispers.warnings — Play Store: https://play.google.com/store/apps/details?id=whispers.warnings — Privacy: https://dreke20.github.io/whispers26-legal/privacy-policy.html
+- Oraculum: Sacred AI Tarot (Lifestyle): AI tarot and astrology readings. Testing: https://play.google.com/apps/testing/oraculum.dirtysouth — Play Store: https://play.google.com/store/apps/details?id=oraculum.dirtysouth — Privacy: https://oracalum.netlify.app/privacy
+- PrismBook: Booking Preview (Business / Booking): Appointment booking for any service business. Connect with an invite code, then book, join the waitlist or check in. Testing: https://play.google.com/apps/testing/com.dirtysouth.prismbook — Play Store: https://play.google.com/store/apps/details?id=com.dirtysouth.prismbook — Privacy: https://prismbook.dirtysouthagency.com/privacy
+- RingSummit (Business): White-label cloud call center and HD softphone with AI voice agents. Tester sign-ups open soon. No Play testing URL yet.
+
+Feature overviews (where listed): https://features.dirtysouthagency.com/shrinkpro/, /sparkquest/, /whispers-warnings/, /oraculum/, and /prismbook/.
+
+## List your app
+
+For indie Android developers who need 12 testers to stay opted in for 14 days before they can apply for Google Play production access. A listing includes an app card on App Lab, Google Group and opt-in steps, a live tester tracker, daily-open reminders, and a weekly feedback and bug report.
+
+Founding offer: the first 20 apps are free, then $29 per app. App Lab recruits real testers. It does not guarantee a tester count or Google’s approval, and never pays for installs or reviews.
+
+## Request an app (custom Android builds)
+
+Dirty South’s App Lab can design and build a custom Android app for local small businesses and indie founders. Dreke is a solo Flutter developer in Middle Georgia (Macon / Warner Robins). The prices below are starting-at estimates for common scopes. A free consult comes first, then a written quote for the actual app. Work is Android-first; iOS can be quoted on request because the apps are built with Flutter. These estimates do not guarantee Google Play approval, a download count, or a search ranking.
+
+Build tiers:
+
+- Starter MVP: starting at $5,000. A focused first version of one core idea. A handful of screens, a clean layout, and submission to Google Play. One main flow, typically 5–10 screens; Android first, built with Flutter; Play Store listing and closed-test setup.
+- Standard: starting at $20,000. An app with user accounts, a backend, and payments or subscriptions. Accounts and a hosted backend; payments or subscriptions; push notifications and a simple admin view.
+- Advanced / AI: starting at $40,000. A more ambitious product: AI features, real-time updates, several user roles, or deeper integrations. Scoped before any quote is final.
+
+Monthly management (starting-at estimates for time; hosting, APIs, and store fees are billed by those providers and are not included):
+
+- Care: starting at $500/month. Bug fixes and crash follow-up, OS and dependency updates, help with hosting and service settings.
+- Play Console & releases: starting at $1,000/month. Everything in Care, plus Play Console setup and management, store listing updates and scheduled releases, and closed-test setup for new versions.
+- Growth: starting at $1,500/month. Everything in Play Console & releases, plus Play Store listing optimization (ASO), App Lab tester recruiting for new releases, and practical marketing support.
+
+## Related site
+
+- [Dirty South Marketing Agency](https://dirtysouthagency.com/) — same-day Google Business Profile fix-ups, monthly marketing, websites, SEO, and custom booking and membership apps.
