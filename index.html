@@ -838,7 +838,7 @@
           "name": "Will the tester counts update when I join?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The public count on each card updates when someone taps I’ve joined & opted in and sends the Google account they used to join the group. That is a self-report. This site cannot read Google Play’s official opted-in list, so a check-in here is not proof that Play has counted you. If the live count can’t be loaded, the card falls back to the last number we entered by hand."
+            "text": "The counts on each card are Google Play opted-in testers, updated by hand on the date shown. Self-reported check-ins on this site are also counted, and the display shows whichever is higher."
           }
         },
         {
@@ -1405,7 +1405,7 @@
           </details>
           <details>
             <summary>Will the tester counts update when I join?</summary>
-            <p>The public count on each card updates when someone taps I’ve joined &amp; opted in and sends the Google account they used to join the group. That is a self-report. This site cannot read Google Play’s official opted-in list, so a check-in here is not proof that Play has counted you. If the live count can’t be loaded, the card falls back to the last number we entered by hand.</p>
+            <p>The counts on each card are Google Play opted-in testers, updated by hand on the date shown. Self-reported check-ins on this site are also counted, and the display shows whichever is higher.</p>
           </details>
           <details>
             <summary>What data does this page collect?</summary>
@@ -1487,7 +1487,7 @@
         playUrl: "https://play.google.com/store/apps/details?id=com.shrinkpro.toolkit",
         groupUrl: "https://groups.google.com/g/dirtysouth-app-lab-testers",
         groupStatus: "live",
-        testers: 1,
+        testers: 3,
         testStart: "",
         privacyUrl: "https://dreke20.github.io/whispers26-legal/shrinkpro/privacy.html",
         icon: "assets/shrinkpro-icon.png",
@@ -1517,7 +1517,7 @@
         playUrl: "https://play.google.com/store/apps/details?id=whispers.warnings",
         groupUrl: "https://groups.google.com/g/dirtysouth-app-lab-testers",
         groupStatus: "live",
-        testers: 3,
+        testers: 5,
         testStart: "",
         privacyUrl: "https://dreke20.github.io/whispers26-legal/privacy-policy.html",
         icon: "assets/whispers-icon.png",
@@ -1562,7 +1562,7 @@
         playUrl: "https://play.google.com/store/apps/details?id=com.dirtysouth.prismbook",
         groupUrl: "https://groups.google.com/g/dirtysouth-app-lab-testers",
         groupStatus: "live",
-        testers: 0,
+        testers: 1,
         testStart: "",
         privacyUrl: "https://prismbook.dirtysouthagency.com/privacy",
         icon: "assets/prismbook-icon.png",
@@ -1621,7 +1621,7 @@
     // Tester tracker: update testers (opted-in count) and testStart (YYYY-MM-DD, the day the group hit 12) per app.
     const REQUIRED_TESTERS = 12;
     const TEST_DAYS = 14;
-    const TRACKER_UPDATED = "Nov 13, 2026";
+    const TRACKER_UPDATED = "Nov 26, 2026";
     const HOWTO_STEPS = [
       "Join the tester Google Group",
       "Tap Become a tester on the Play opt-in page",
@@ -1668,9 +1668,10 @@
           ? need + " more " + (need === 1 ? "tester" : "testers") + " needed before the 14-day clock can start. Already in? Check in below, and open the app for 1 minute each day."
           : "We have enough testers! The 14-day test starts as soon as everyone has installed. Then open it for 1 minute each day.";
       }
-      const updated = countsAreLive
-        ? "Self-reported opt-ins" + (liveUpdated ? " · updated " + liveUpdated + " (America/New_York)" : "") + ". These counts aren’t verified against Google Play."
-        : "Counts updated " + TRACKER_UPDATED + ". Live self-reported counts appear after the form script is updated.";
+      let updated = "Google Play opted-in testers, updated by hand on " + TRACKER_UPDATED + ". Self-reported check-ins on this site are also counted, and the display shows whichever is higher.";
+      if (countsAreLive && liveUpdated) {
+        updated += " Check-ins updated " + liveUpdated + " (America/New_York).";
+      }
       return { head: head, pct: pct, note: note, updated: updated, count: count };
     }
 
@@ -1918,7 +1919,7 @@
         return shortName + " " + displayCountFor(app) + "/" + REQUIRED_TESTERS;
       });
       const total = liveApps.reduce(function (sum, app) { return sum + displayCountFor(app); }, 0);
-      const source = countsAreLive ? "Self-reported check-ins" : "Last confirmed counts";
+      const source = countsAreLive ? "Play Console or check-ins, whichever is higher" : "Google Play opted-in testers";
       line.textContent = source + " · " + parts.join(" · ") + " · " + total + " testers across " + liveApps.length + " apps.";
     }
 
